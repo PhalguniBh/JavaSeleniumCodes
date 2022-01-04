@@ -1,0 +1,47 @@
+package externalSources;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class CopyFileContents {
+
+	static File f;
+	static FileReader fr;
+	static FileWriter fw;
+	static BufferedReader br;
+	static BufferedWriter bw;
+	static String Fpath="";
+	static String FpathNew="";
+	
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		//User to input a path of file to copy
+		
+		
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter a full path of a file to copy: ");
+		Fpath = sc.next();
+		fr = new FileReader(Fpath);
+		br = new BufferedReader(fr);
+		
+		System.out.println("Enter path to copy along with file name: ");
+		FpathNew=sc.next();
+		System.out.println(FpathNew);
+		fw = new FileWriter(FpathNew);
+		bw = new BufferedWriter(fw);
+		sc.close();
+		
+		String txt="";
+		while((txt=br.readLine())!=null) {
+			bw.newLine();
+			bw.write(txt);
+		}
+		bw.flush();
+		bw.close();
+		//User to input a copy to location
+		
+		//Copy file
+	}
+
+}
