@@ -1,0 +1,64 @@
+package externalSources;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class ReadEvenLineContents {
+
+	static File f;
+	static FileReader fr;
+	static FileWriter fw;
+	static BufferedReader br;
+	static BufferedWriter bw;
+	static String Fpath="";
+	static String FpathNew="";
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		ArrayList<String> s = new ArrayList<String>();
+				
+		System.out.println("Enter a full path of a file to copy: ");
+		Fpath = sc.next();
+		fr = new FileReader(Fpath);
+		br = new BufferedReader(fr);
+		
+		
+		System.out.println("Enter path to copy along with file name: ");
+		FpathNew=sc.next();
+		System.out.println(FpathNew);
+		fw = new FileWriter(FpathNew);
+		bw = new BufferedWriter(fw);
+		sc.close();
+		
+		String txt="";
+		
+		int n = 0;
+		while ((txt = br.readLine()) != null) {
+		    if(n % 2 == 0){
+		        System.out.println(txt);
+		    }
+		    else{
+		        
+		        s.add(txt);
+		    }
+		    n++;
+		}
+		Iterator<String> i = s.iterator();
+		while (i.hasNext()) {
+		   	bw.write(i.next());
+		   	bw.newLine();
+		}
+		bw.flush();
+		
+	}
+
+}
